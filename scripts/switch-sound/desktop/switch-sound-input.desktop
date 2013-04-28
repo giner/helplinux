@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Exec=switch-sound-input.sh
+Name=Switch Audio Input
+Icon=audio-input-microphone

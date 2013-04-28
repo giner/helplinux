@@ -1,0 +1,7 @@
+Script to switch audio input and output for pulseaudio
+
+Requirements:
+- bash
+- pacmd
+- pactl
+- awk
