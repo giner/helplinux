@@ -5,3 +5,4 @@ Requirements:
 - pacmd
 - pactl
 - awk
+- notify-send
