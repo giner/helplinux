@@ -3,6 +3,6 @@ Script to switch audio input and output for pulseaudio
 Requirements:
 - bash
 - pacmd
-- pactl >= v0.99.1
+- grep
 - awk
 - notify-send

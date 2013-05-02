@@ -2,18 +2,19 @@
 
 # Get the target (input or output) from the filename and exit otherwise
 IFS=''
+grep_index="egrep '^[*\ ]*index:\ +[[:digit:]]+$' | egrep -o '[[:digit:]]+'"
 if [[ "$0" =~ -output[-[:digit:]]*.sh$ ]]; then
     pacmd_set_default_command="pacmd set-default-sink"
-    pactl_list_command_1="pactl list short sink-inputs"
-    pactl_list_command_2="pactl list short sinks"
-    pactl_move_command="pactl move-sink-input"
+    pacmd_index_1="$(pacmd list-sink-inputs | eval $grep_index)"
+    pacmd_index_2="$(pacmd list-sinks | eval $grep_index)"
+    pacmd_move_command="pacmd move-sink-input"
     pacmd_list_data=$(pacmd list-sinks)
     message_base="Audio output:"
 elif [[ "$0" =~ -input[-[:digit:]]*.sh$ ]]; then
     pacmd_set_default_command="pacmd set-default-source"
-    pactl_list_command_1="pactl list short source-outputs"
-    pactl_list_command_2="pactl list short sources"
-    pactl_move_command="pactl move-source-output"
+    pacmd_index_1="$(pacmd list-source-outputs | eval $grep_index)"
+    pacmd_index_2="$(pacmd list-sources | eval $grep_index)"
+    pacmd_move_command="pacmd move-source-output"
     pacmd_list_data=$(pacmd list-sources)
     message_base="Audio input:"
 else
@@ -72,7 +73,7 @@ else
     [[ "$default" =~ ^\ *\*\ *index:\ +([[:digit:]]+) ]] || exit 1
     default_id="${BASH_REMATCH[1]}"
     # Get the list of targets
-    list=($($pactl_list_command_2 | awk '{print $1}'))
+    list=($pacmd_index_2)
     # Exclude targets without ports from the list
     for ((x=0, max=${#list[@]}; x<$max; x++)); do
         if [[ -z $(get_pacmd_section ${list[$x]} ports) ]]; then
@@ -93,8 +94,8 @@ fi
 
 # Set this target as a default and move running applications to it
 $pacmd_set_default_command $id > /dev/null
-for index in $($pactl_list_command_1 | awk '{print $1}'); do
-    $pactl_move_command $index $id;
+for index in $pacmd_index_1; do
+    $pacmd_move_command $index $id > /dev/null;
 done
 
 # Display the name of selected audio card with notify-send
