@@ -4,5 +4,4 @@ Requirements:
 - bash
 - pacmd
 - grep
-- awk
 - notify-send
