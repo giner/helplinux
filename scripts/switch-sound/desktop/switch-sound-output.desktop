@@ -3,3 +3,4 @@ Type=Application
 Exec=switch-sound-output.sh
 Name=Switch Audio Output
 Icon=audio-volume-high
+Categories=Audio;
