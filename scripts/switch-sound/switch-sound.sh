@@ -74,12 +74,22 @@ else
     default_id="${BASH_REMATCH[1]}"
     # Get the list of targets
     list=($pacmd_index_2)
-    # Exclude targets without ports from the list
+    # Exclude targets with device.class different from "sound"
     for ((x=0, max=${#list[@]}; x<$max; x++)); do
-        if [[ -z $(get_pacmd_section ${list[$x]} ports) ]]; then
-            unset list[$x]
-        fi
+        while read line; do
+            if [[ "$line" =~ ^$'\t'{2}device.class\ =\ \"(.*)\"$ ]]; then
+                device_class=${BASH_REMATCH[1]}
+		if [[ $device_class != "sound" ]]; then
+                    unset list[$x]
+		fi
+            fi
+        done <<< "$(get_pacmd_section ${list[$x]} properties)"
     done
+    # Check if the list is not empty and exit otherwise
+    if [[ -z ${list[@]} ]]; then
+        echo "There are no any devices"
+        exit 0
+    fi
     # Reasseble array to get rid of empty values after "unset"
     list=($(echo ${list[@]}))
     # Get the next target ID (cycle)
@@ -99,11 +109,14 @@ for index in $pacmd_index_1; do
 done
 
 # Display the name of selected audio card with notify-send
-get_pacmd_section $id properties | while read line; do
-    if [[ "$line" =~ ^$'\t'{2}alsa.card_name\ =\ \"(.*)\" ]]; then
+while read line; do
+    if [[ "$line" =~ ^$'\t'{2}alsa.card_name\ =\ \"(.*)\"$ ]]; then
         alsa_card_name=${BASH_REMATCH[1]}
         message="$message_base $id - $alsa_card_name"
-        echo $message
-        notify-send --icon=audio-card --expire-time=2000 "$message"
     fi
-done
+    if [[ "$line" =~ ^$'\t'{2}device.icon_name\ =\ \"(.*)\"$ ]]; then
+        device_icon_name=${BASH_REMATCH[1]}
+    fi
+done <<< "$(get_pacmd_section $id properties)"
+echo $message
+notify-send --icon="$device_icon_name" --expire-time=2000 "$message"
