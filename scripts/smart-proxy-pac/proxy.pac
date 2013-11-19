@@ -1,5 +1,5 @@
 /* Creator: Stanislav German-Evtushenko (2012)
- * Contributor: add you name here
+ * Contributor: add your name here
  */
  
 function FindProxyForURL(url, host) {
