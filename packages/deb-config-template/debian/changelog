@@ -1,0 +1,5 @@
+PACKAGE_NAME (PACKAGE_VERSION) DISTRIBUTION [DISTRIBUTION]; urgency=low
+
+  * Initial release.
+
+ -- MAINTAINER  Wed, 26 Jun 2013 13:39:03 +0400

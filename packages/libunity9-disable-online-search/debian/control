@@ -1,0 +1,15 @@
+Source: libunity9-disable-online-search
+Section: misc
+Priority: optional
+Maintainer: Stanislav German-Evtushenko <ginermail@gmail.com>
+Build-Depends: config-package-dev (>= 5.0~)
+
+Package: libunity9-disable-online-search
+Architecture: all
+Depends: ${misc:Depends}
+Provides: ${diverted-files}
+Conflicts: ${diverted-files}
+Description: Change default privacy settings for Dash Search in Unity
+ This package overrides Unity settings and configures online search results disabled
+ as a default behaviour for newly created system accounts. These changes are done
+ in order to respect users' privacy.

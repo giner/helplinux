@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+
+# Exclude *.svn* from building
+export DH_ALWAYS_EXCLUDE=.svn
+
+# Core (check http://debathena.mit.edu/config-packages for more information)
+%:
+	dh $@ --with=config-package
+
+# Prevent dh_installdeb of treating files in /etc as configuration files
+override_dh_installdeb:
+	dh_installdeb
+	rm debian/*/DEBIAN/conffiles

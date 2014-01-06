@@ -1,0 +1,13 @@
+Source: PACKAGE_NAME
+Section: morpho/misc
+Priority: optional
+Maintainer: MAINTAINER
+Build-Depends: config-package-dev (>= 5.0~)
+
+Package: PACKAGE_NAME
+Architecture: all
+Depends: ${misc:Depends}, DEPENDENCY [, DEPENDENCY ...]
+Provides: ${diverted-files}
+Conflicts: ${diverted-files}
+Description: PACKAGE_DESCRIPTION_SHORT
+ PACKAGE_DESCRIPTION_LONG.

@@ -1,0 +1,51 @@
+This is a template that is used to create debian configuration packages.
+
+
+Consider to replace this README file with an appropriate one when
+create a normal package based on this template, for example:
+
+************************************************************************
+# Installed by this package:
+- snmpd (needed to monitor server remotely)
+
+# Configured by this package:
+- snmpd (allow access from nagios server)
+************************************************************************
+
+
+An example of substitutions:
+
+========================================================================
+PACKAGE_NAME
+snmp-config
+
+DISTRIBUTION [DISTRIBUTION]
+lucid precise
+
+MAINTAINER
+Stanislav German-Evtushenko <ginermail@gmail.com>
+
+DEPENDENCY [, DEPENDENCY]
+snmpd
+
+PACKAGE_DESCRIPTION_SHORT
+Ubuntu SNMP daemon config package
+
+PACKAGE_DESCRIPTION_LONG.
+Ubuntu SNMP daemon config package.
+
+FILES_TO_DISPLACE
+/etc/snmp/snmpd.conf.custom
+/etc/default/snmpd.custom
+
+POSTINST_SCRIPT
+if [ "$1" = "configure" ]; then
+    # Restart a daemon to apply the new config
+    /etc/init.d/snmpd restart || true
+fi
+========================================================================
+
+
+You can use "debchange" to create or update "debian/changelog", for example:
+DEBEMAIL="ginermail@gmail.com" DEBFULLNAME="Stanislav German-Evtushenko" debchange --distribution "lucid precise" --force-distribution --newversion $(date +%Y%m%d-%H) --package $(basename $PWD) --create
+DEBEMAIL="ginermail@gmail.com" DEBFULLNAME="Stanislav German-Evtushenko" debchange --distribution "lucid precise" --force-distribution --newversion $(date +%Y%m%d-%H)
