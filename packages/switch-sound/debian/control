@@ -1,0 +1,12 @@
+Source: switch-sound
+Section: misc
+Priority: optional
+Maintainer: Stanislav German-Evtushenko <ginermail@gmail.com>
+
+Package: switch-sound
+Architecture: all
+Depends: pulseaudio-utils, bash, grep, libnotify-bin
+Homepage: http://www.helplinux.ru/wiki/en:kb:switch-sound
+Description: Script to switch audio input and output for pulseaudio
+ This package provides a script that allows to switch
+ audio input and output for pulseaudio quickly.

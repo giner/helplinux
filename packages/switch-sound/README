@@ -1,0 +1,27 @@
+Script to switch audio input and output for pulseaudio
+
+Files:
+- switch-sound.sh - script itself
+- switch-sound-input.sh - link to switch-sound.sh, rotates input for pulseaudio
+- switch-sound-output.sh - link to switch-sound.sh, rotates output for pulseaudio
+- desktop/*.desktop - desktop files that can be placed to the desktop or a panel for quick access
+
+Installation:
+- copy switch-sound.sh to $HOME/bin or /usr/local/bin
+- create links, for example:
+    cd $HOME/bin
+    ln -s switch-sound.sh switch-sound-input.sh
+    ln -s switch-sound.sh switch-sound-output.sh
+- place *.desktop files to a proper place for quick access
+
+Requirements:
+- bash
+- pacmd
+- grep
+- notify-send
+
+Necessary configuration changes:
+- consider replacing "load-module module-stream-restore"
+  by "load-module module-stream-restore restore_device=false"
+  in /etc/pulse/default.pa to get it work properly
+  more info: http://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/DefaultDevice
