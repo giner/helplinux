@@ -2,7 +2,7 @@ Source: libunity9-disable-online-search
 Section: misc
 Priority: optional
 Maintainer: Stanislav German-Evtushenko <ginermail@gmail.com>
-Build-Depends: config-package-dev (>= 5.0~)
+Build-Depends: debhelper, config-package-dev (>= 5.0~)
 
 Package: libunity9-disable-online-search
 Architecture: all

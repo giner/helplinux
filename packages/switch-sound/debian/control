@@ -2,6 +2,7 @@ Source: switch-sound
 Section: misc
 Priority: optional
 Maintainer: Stanislav German-Evtushenko <ginermail@gmail.com>
+Build-Depends: debhelper
 
 Package: switch-sound
 Architecture: all

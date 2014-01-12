@@ -2,7 +2,7 @@ Source: PACKAGE_NAME
 Section: morpho/misc
 Priority: optional
 Maintainer: MAINTAINER
-Build-Depends: config-package-dev (>= 5.0~)
+Build-Depends: debhelper, config-package-dev (>= 5.0~)
 
 Package: PACKAGE_NAME
 Architecture: all
