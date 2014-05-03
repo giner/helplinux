@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Created by Stanislav German-Evtushenko, 2011 (http://habrahabr.ru/post/122876/)
+# Updated by Stanislav German-Evtushenko, 2014
+
 if [[ $# == 2 ]]; then
 	LAN=$1
 	WIFI=$2
