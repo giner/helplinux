@@ -21,5 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 - Restart your Redmine web server
 
 # Usage examples
+
 {{userpage}}
 {{userpage(project_id, user_login, parent_page)}}
