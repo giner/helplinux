@@ -19,3 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 - Copy the plugin files into 'redmine/plugins/redmine_userpage_macro'
 - Restart your Redmine web server
+
+# Usage examples
+{{userpage}}
+{{userpage(project_id, user_login, parent_page)}}
