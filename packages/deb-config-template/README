@@ -20,7 +20,7 @@ PACKAGE_NAME
 snmp-config
 
 DISTRIBUTION [DISTRIBUTION]
-lucid precise
+trusty
 
 MAINTAINER
 Stanislav German-Evtushenko <ginermail@gmail.com>
@@ -47,5 +47,5 @@ fi
 
 
 You can use "debchange" to create or update "debian/changelog", for example:
-DEBEMAIL="ginermail@gmail.com" DEBFULLNAME="Stanislav German-Evtushenko" debchange --distribution "lucid precise" --force-distribution --newversion $(date +%Y%m%d-%H) --package $(basename $PWD) --create
-DEBEMAIL="ginermail@gmail.com" DEBFULLNAME="Stanislav German-Evtushenko" debchange --distribution "lucid precise" --force-distribution --newversion $(date +%Y%m%d-%H)
+DISTRIBUTION=trusty; DEBEMAIL="ginermail@gmail.com" DEBFULLNAME="Stanislav German-Evtushenko" debchange --distribution "$DISTRIBUTION" --newversion $(date +%Y%m%d-%H~$DISTRIBUTION) --package $(basename $PWD) --create
+DISTRIBUTION=trusty; DEBEMAIL="ginermail@gmail.com" DEBFULLNAME="Stanislav German-Evtushenko" debchange --distribution "$DISTRIBUTION" --newversion $(date +%Y%m%d-%H~$DISTRIBUTION)

@@ -1,8 +1,5 @@
 #!/usr/bin/make -f
 
-# Exclude *.svn* from building
-export DH_ALWAYS_EXCLUDE=.svn
-
 # Core (check http://debathena.mit.edu/config-packages for more information)
 %:
 	dh $@ --with=config-package
